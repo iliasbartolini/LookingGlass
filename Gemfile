@@ -62,7 +62,8 @@ gem 'spring',        group: :development
 gem "thin"
 gem "quiet_assets"
 gem "simple_form"
-gem "elasticsearch", git: "git://github.com/elasticsearch/elasticsearch-ruby.git"
-gem "elasticsearch-persistence", git: "git://github.com/elasticsearch/elasticsearch-rails.git", branch: "persistence-model", require: "elasticsearch/persistence/model"
-gem "elasticsearch-rails", git: "git://github.com/elasticsearch/elasticsearch-rails.git"
+
+gem "elasticsearch"
+gem "elasticsearch-rails"
+gem "elasticsearch-persistence", require: 'elasticsearch/persistence/model'
 gem "elasticsearch-model"
