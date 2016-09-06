@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class SearchTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+
+  test 'Doc search homepage' do
+    visit root_path
+    assert has_content?('Docs')
+  end
+
 end

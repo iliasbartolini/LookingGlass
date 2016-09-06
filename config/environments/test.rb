@@ -36,4 +36,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Configure the runner test order to :random (default) or :sorted,
+  config.active_support.test_order = :random
 end
