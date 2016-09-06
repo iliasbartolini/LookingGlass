@@ -95,7 +95,7 @@ module CategoryFormat
                         <ul class="nav nav-list tree collapse">'
     else
       list_html = '<ul class="nav nav-list">
-                     <li>
+                     <li id="sidebar_'+ category_name +'">
                         <label class="tree-toggler nav-header just-plus" title="' + total_count + ' Filters">
                           <i class="icon-' + field_spec["Icon"] + '"></i>' + field_spec["Human Readable Name"] + '
                         </label>
