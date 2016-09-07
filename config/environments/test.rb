@@ -42,6 +42,6 @@ Rails.application.configure do
 
   #######################################
   # Custom application configuration keys
-  config.x.importer.instance_config = 'app/dataspec/instances/harvester_config.json'
+  config.x.importer.instance_config = 'app/dataspec/instances/test_config.json'
 
 end

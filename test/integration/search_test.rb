@@ -9,7 +9,7 @@ class SearchTest < ActionDispatch::IntegrationTest
     visit root_path
 
     #verify page is loaded
-    assert has_content?('Docs')
+    assert has_selector?('.title', text: 'Docs search test')
     assert has_selector?('#search-details .detail', text: '241 Total')
 
     #verify facets categories are present
