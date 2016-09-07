@@ -20,14 +20,14 @@ LookingGlass can be used in combination with [Harvester](https://github.com/Tran
 - Clone repo `git clone --recursive git@github.com:TransparencyToolkit/LookingGlass.git`
 - Then cd into directory `cd LookingGlass`
 - Install Ruby dependencies `bundle install`
-- Generate simple form data `rails generate simple_form:install --bootstrap`
+- Optional: Generate simple form data `rails generate simple_form:install --bootstrap`
 
-## Configuring
+## Configuring (Optional)
 
 - Browse to the dataspec directory `cd app/dataspec/`
 - Copy the example config file `instances/example-config.json` to `instances/your-config.json`
 - Add any additional dataspec files to `your-config.json` file by adding to `Dataset Config` array
-- Edit `importer.json` attribute `Instance Config` to your config `app/dataspec/instances/your-config.json`
+- Edit the configuration attribute `config.x.importer.instance_config` in your enviroments (eg. `config/environments/development.rb`) to your config `app/dataspec/instances/your-config.json`
 
 You might want do add custom data related things to your instance as well. LookingGlass use [datapackages](https://data.okfn.org) for this goal such as `month-names` for internationalization!
 
@@ -35,7 +35,7 @@ You might want do add custom data related things to your instance as well. Looki
     - `cd data_packages`
     - git clone https://github.com/you/datapackage.git
 
-## Adding Datasets
+## Adding Datasets (Optional)
 
 This search should work for any JSON based dataset. If you want to add a dataset, see the app/dataspec folder for the necessary files. You will need to create your own `dataspec-template` package.
 

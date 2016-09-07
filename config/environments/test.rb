@@ -39,4 +39,9 @@ Rails.application.configure do
 
   # Configure the runner test order to :random (default) or :sorted,
   config.active_support.test_order = :random
+
+  #######################################
+  # Custom application configuration keys
+  config.x.importer.instance_config = 'app/dataspec/instances/harvester_config.json'
+
 end

@@ -76,4 +76,9 @@ Rails.application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  #######################################
+  # Custom application configuration keys
+  config.x.importer.instance_config = 'app/dataspec/instances/harvester_config.json'
+
 end

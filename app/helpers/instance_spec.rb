@@ -3,7 +3,7 @@ class InstanceSpec
 
   # Load importer and vars for search instance
   def initialize
-    @path = JSON.parse(File.read("app/dataspec/importer.json")).first["Instance Config"]
+    @path = Rails.application.config.x.importer.instance_config
     get_site_config
   end
 

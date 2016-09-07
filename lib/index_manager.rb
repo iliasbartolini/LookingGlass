@@ -48,7 +48,7 @@ class IndexManager
   # Import data from different formats
   def self.import_data(options={})
     # Load all datasets and make indexes for them
-    @importer = JSON.parse(File.read("app/dataspec/importer.json")).first
+    @importer = Rails.application.config.x.importer.instance_config
     load_everything
 
     @dataspecs.each do |dataspec|
