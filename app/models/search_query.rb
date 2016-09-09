@@ -31,8 +31,9 @@ class SearchQuery
     fieldhash = @all_facets # CHECK ON ALL SEARCH AND ONE INDEX SEARCH
     #fieldhash = get_all_categories ONLY WORKS FOR ALL FACETS
     highlighthash = specify_fields_to_highlight(queryhash, highlighthash)
-    
-    query = {from: @start, size: 30, query: fullhash, facets: fieldhash,
+
+    #TODO:facets
+    query = {from: @start, size: 30, query: fullhash, aggregations: fieldhash,
                highlight: { pre_tags: ["<b class='is_highlighted'>"], post_tags: ["</b>"], fields: highlighthash}}
     
     return query, @model_to_search

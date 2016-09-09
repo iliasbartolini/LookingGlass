@@ -45,7 +45,7 @@ class SearchTest < ActionDispatch::IntegrationTest
       assert has_selector?('.search-filter', text: 'Chicago, IL')
       assert has_selector?('.category', text: 'Company Location [filter]')
     end
-    assert_search_result_count_is('10 Total')
+    assert_search_result_count_is('35 Total')
 
     within('#searchtags') { click_link 'X' }
 

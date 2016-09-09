@@ -32,7 +32,8 @@ class DocsController < ApplicationController
     end
   
     # Get facets and documents
-    @facets = @docs.response["facets"]
+    #TODO:facets
+    @facets = @docs.response["aggregations"]
     @docs = @docs.response["hits"]["hits"]
   end
 
@@ -91,10 +92,11 @@ class DocsController < ApplicationController
 
   # Sorts the results
   def sort_results(start, all_facet_fields, dataspec)
+    #TODO:facets
     if !dataspec.sort_field.empty?
-      @docs = Elasticsearch::Model.search({sort: {dataspec.sort_field => "desc"}, from: start, size: 30, facets: all_facet_fields}, @models)
+      @docs = Elasticsearch::Model.search({sort: {dataspec.sort_field => "desc"}, from: start, size: 30, aggregations: all_facet_fields}, @models)
     else
-      @docs = Elasticsearch::Model.search({from: start, size: 30, facets: all_facet_fields}, @models)
+      @docs = Elasticsearch::Model.search({from: start, size: 30, aggregations: all_facet_fields}, @models)
     end
   end
 

@@ -70,7 +70,8 @@ class RunTrends
     from = 0
 
     while from < (total+1000)
-      cur_docs = Elasticsearch::Model.search({from: from, size: 1000, facets: @all_facets}, [chosen_model]).response.hits.hits
+      #TODO:facets - non test covered
+      cur_docs = Elasticsearch::Model.search({from: from, size: 1000, aggregations: @all_facets}, [chosen_model]).response.hits.hits
       from += 1000
       # Nil line 30 error
       

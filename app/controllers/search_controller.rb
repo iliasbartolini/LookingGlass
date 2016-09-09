@@ -15,8 +15,9 @@ class SearchController < ApplicationController
       query, model_to_search = s.build_query
     
       # Searches the specified models with query input
-      @docs = Elasticsearch::Model.search(query, model_to_search) 
-      @facets = @docs.response["facets"]
+      @docs = Elasticsearch::Model.search(query, model_to_search)
+      #TODO:facets
+      @facets = @docs.response["aggregations"]
     
       @pagination = WillPaginate::Collection.create(pagenum, 30, @docs.response.hits.total) do |pager|
         pager.replace @docs

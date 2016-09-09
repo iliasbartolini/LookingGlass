@@ -26,8 +26,8 @@ module CategoryFormat
     outhtml = ""
     
     sortFields(facet_list, @all_field_info).each do |field|
-      total_count = facets[field.to_sym]["terms"].count.to_s
-      outhtml += genFacet(facets, "", field.to_sym, total_count) if facets[field.to_sym]["terms"].count > 0
+      total_count = facets[field.to_sym]['buckets'].inject(0) {|sum, bucket| sum + bucket['doc_count'] }
+      outhtml += genFacet(facets, "", field.to_sym, total_count.to_s) if total_count > 0
     end
 
     return outhtml
@@ -60,10 +60,11 @@ module CategoryFormat
   # Splits the results into overflow/not overflow
   def splitResults(categories, field)
     # Overflow calculation settings
-    totalnum = categories[field]["terms"].count
+    totalnum = categories[field]["buckets"].count
     numshow = totalnum > 5 ? 5+totalnum*0.01 : totalnum
 
     # Divides list of terms
+    # TODO:facets - facets and aggregations are already ordered by doc_count - test that is not needed.
     sorted_results = sortResults(categories, field)
     top_results = sorted_results[0..numshow]
     overflow_results = sorted_results[numshow+1..sorted_results.length-1]
@@ -75,7 +76,7 @@ module CategoryFormat
 
   # Sorts facets by number of results
   def sortResults(categories, field)
-    return categories[field]["terms"].sort {|a,b| b["count"] <=> a["count"]}
+    return categories[field]['buckets'].sort {|a,b| b['doc_count'] <=> a['doc_count']}
   end
 
   # Generates HTML for category
