@@ -40,10 +40,10 @@ module FieldQuery
   # Combine search and facet queries based on if it is search and facets, just search, just facets  
   def combine_search_and_facet_queries(queryhash, filterhash)
     #TODO:facets => Use the bool query instead with a must clause for the query and a filter clause for the filter.
-    if !@filter_by.empty? && !queryhash.empty?
-      fullhash = { filtered: { query: queryhash, filter: filterhash }}
-    elsif @filter_by.empty? && queryhash.empty?
+    if @filter_by.empty? && queryhash.empty?
       fullhash = { 'match_all': {} }
+    elsif !@filter_by.empty? && !queryhash.empty?
+      fullhash = { filtered: { query: queryhash, filter: filterhash }}
     elsif queryhash.empty?
       fullhash = { filtered: { filter: filterhash}}
     else

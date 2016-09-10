@@ -102,6 +102,27 @@ class SearchTest < ActionDispatch::IntegrationTest
     assert_search_result_count_is('274 Total')
   end
 
+  test 'Search query and filters combinations' do
+    visit root_path
+
+    fill_in 'q', with: 'Tool'
+    find('#search-button-all').click
+
+    assert_search_result_count_is('56 Total')
+
+    #TODO:
+    # find('#sidebar_company_facet', text: 'Company').click
+    # within('#sidebar_company_facet') { click_link 'Self-Employed (4)'}
+    # assert_search_result_count_is('4 Total')
+    #
+    # within('#searchtags') do
+    #   assert has_selector?('.search-filter', text: 'Self-Employed')
+    #   assert has_selector?('.category', text: 'Company [filter]')
+    # end
+
+  end
+
+
   private
   def assert_search_result_count_is(doc_count)
     assert has_selector?('#search-details .detail', text: doc_count)
